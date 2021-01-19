@@ -41,7 +41,7 @@ render() {
                 </div>
              </div>
             <div className="email">
-                  <TextField id="outlined-basic" label="Username" variant="outlined" width="500px" />
+                  <TextField id="outlined-basic" style ={{width: '155%'}} label="Username" variant="outlined" width="500px" />
                   <p><span class="spanid">You can use letters, numbers and symbols</span></p>
             </div>
            <div className="emp">  
@@ -62,3 +62,4 @@ render() {
 }
 
 }
+

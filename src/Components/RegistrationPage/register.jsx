@@ -7,6 +7,7 @@ import logo from '../../Images/account.svg';
 import Checkbox from '@material-ui/core/Checkbox';
 // import ReactDOM, { render } from 'react-dom';
 import '../RegistrationPage/register.css'
+import { registration } from "../../Services/userService"
 // import { FormHelperText, Grid } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,8 @@ export default class RegisterForm extends React.Component{
         Rpassword: false,
         showPassword : false,
       }, 
+      enable: true,
+          service: "advance",
       errors: {
         firstName: "",
         lastName: "",
@@ -157,34 +160,57 @@ export default class RegisterForm extends React.Component{
    
   };
 
-   handleSubmit = () => {
+  handleSubmit2 =(event) =>{
+    event.preventDefault();
+    console.log("Line no 155")
+     let userData = {
+      cartId: "",
+      email: this.state.email,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      password: this.state.password,
+      service: "advance"
 
-         if (
-           this.state.email === "" &&
-           this.state.password === "" &&
-           this.state.firstName === "" &&
-           this.state.lastName === "" &&
-           this.state.Rpassword === ""
-         ) {
-           this.setState({
-             errorValid: {
-               email: true,
-               password: true,
-               firstName: true,
-               lastName: true,
-               Rpassword: true
-             },
-             errors: {
-               email: "email field shoul not be empty",
-               password: "password field should not be empty",
-               firstName: "firstname field should not be empty",
-               lastName: "lastname field should not be empty",
-               Rpassword: "password field should not be empty"
-             },
-           });
-         }
+    }
+    console.log(userData)
+    registration (userData).then((data)=>{
+      console.log(data);
+    })
+    .catch ((error)=>{
+      console.log(error)
+    })
+      
     
-        }   
+  }
+
+  //  handleSubmit = () => {
+
+  //        if (
+  //          this.state.email === "" &&
+  //          this.state.password === "" &&
+  //          this.state.firstName === "" &&
+  //          this.state.lastName === "" &&
+  //          this.state.Rpassword === ""
+  //        ) {
+  //          this.setState({
+  //            errorValid: {
+  //              email: true,
+  //              password: true,
+  //              firstName: true,
+  //              lastName: true,
+  //              Rpassword: true
+  //            },
+  //            errors: {
+  //              email: "email field shoul not be empty",
+  //              password: "password field should not be empty",
+  //              firstName: "firstname field should not be empty",
+  //              lastName: "lastname field should not be empty",
+  //              Rpassword: "password field should not be empty"
+  //            },
+  //          });
+  //        }
+    
+  //       }   
 render() {
     return (
       <div className="main" >
@@ -287,7 +313,7 @@ render() {
               <Button className="button1" 
               variant="contained" 
               color="primary"
-              onClick={this.handleSubmit}
+              onClick={this.handleSubmit2}
               >  Next </Button>
               <Button className="button2" color="primary">Sign in instead</Button>
         </div>

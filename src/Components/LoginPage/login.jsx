@@ -63,9 +63,6 @@ export default class LoginForm extends React.Component{
 
     return isError;
   };
-  
-  
-
  
   onSubmit = (event) => {
     event.preventDefault();

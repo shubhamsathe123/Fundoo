@@ -33,9 +33,7 @@ export default class RegisterForm extends React.Component{
         password: false,
         Rpassword: false,
         showPassword : false,
-      },
-      enable: true,
-      // service: "advance",
+      }, 
       errors: {
         firstName: "",
         lastName: "",
@@ -159,15 +157,34 @@ export default class RegisterForm extends React.Component{
    
   };
 
-handleSubmit2 =(event) =>{
-  event.preventDefault();
-  if ((this.state.firstName.length === 0) && (this.state.lastName.length === 0) && (this.state.email.length === 0) &&
-  (this.state.password.length === 0) && (this.state.Rpassword.length === 0)){
-    alert("please enter all the fields")
-  }
-}
-  
-  
+   handleSubmit = () => {
+
+         if (
+           this.state.email === "" &&
+           this.state.password === "" &&
+           this.state.firstName === "" &&
+           this.state.lastName === "" &&
+           this.state.Rpassword === ""
+         ) {
+           this.setState({
+             errorValid: {
+               email: true,
+               password: true,
+               firstName: true,
+               lastName: true,
+               Rpassword: true
+             },
+             errors: {
+               email: "email field shoul not be empty",
+               password: "password field should not be empty",
+               firstName: "firstname field should not be empty",
+               lastName: "lastname field should not be empty",
+               Rpassword: "password field should not be empty"
+             },
+           });
+         }
+    
+        }   
 render() {
     return (
       <div className="main" >
@@ -270,7 +287,7 @@ render() {
               <Button className="button1" 
               variant="contained" 
               color="primary"
-              onClick={this.handleSubmit2}
+              onClick={this.handleSubmit}
               >  Next </Button>
               <Button className="button2" color="primary">Sign in instead</Button>
         </div>

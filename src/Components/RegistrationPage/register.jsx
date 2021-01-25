@@ -160,8 +160,39 @@ export default class RegisterForm extends React.Component{
    
   };
 
+  handleSubmit = () => {
+
+    if (
+      this.state.email === "" &&
+      this.state.password === "" &&
+      this.state.firstName === "" &&
+      this.state.lastName === "" &&
+      this.state.Rpassword === ""
+    ) {
+      this.setState({
+        errorValid: {
+          email: true,
+          password: true,
+          firstName: true,
+          lastName: true,
+          Rpassword: true
+        },
+        errors: {
+          email: "email field shoul not be empty",
+          password: "password field should not be empty",
+          firstName: "firstname field should not be empty",
+          lastName: "lastname field should not be empty",
+          Rpassword: "password field should not be empty"
+        },
+      });
+      return false;
+    }
+
+   }   
   handleSubmit2 =(event) =>{
     event.preventDefault();
+    const err = this.handleSubmit();
+    if(!err){
     console.log("Line no 155")
      let userData = {
       cartId: "",
@@ -179,38 +210,11 @@ export default class RegisterForm extends React.Component{
     .catch ((error)=>{
       console.log(error)
     })
-      
+  }  
     
   }
 
-  //  handleSubmit = () => {
-
-  //        if (
-  //          this.state.email === "" &&
-  //          this.state.password === "" &&
-  //          this.state.firstName === "" &&
-  //          this.state.lastName === "" &&
-  //          this.state.Rpassword === ""
-  //        ) {
-  //          this.setState({
-  //            errorValid: {
-  //              email: true,
-  //              password: true,
-  //              firstName: true,
-  //              lastName: true,
-  //              Rpassword: true
-  //            },
-  //            errors: {
-  //              email: "email field shoul not be empty",
-  //              password: "password field should not be empty",
-  //              firstName: "firstname field should not be empty",
-  //              lastName: "lastname field should not be empty",
-  //              Rpassword: "password field should not be empty"
-  //            },
-  //          });
-  //        }
-    
-  //       }   
+  
 render() {
     return (
       <div className="main" >
@@ -260,7 +264,7 @@ render() {
             <div className="email">
                   <TextField size="small"  
                   id="outlined-basic" 
-                  style ={{width: '140%'}} 
+                  style ={{width: '129%'}} 
                   label="Username" 
                   variant="outlined" 
                   width="500px" 
@@ -268,9 +272,9 @@ render() {
                     value={this.state.email}
                     error={this.state.errorValid.email}
                     onChange={this.handleEmailInput}
-                    helperText={this.state.errors["email"]}
+                     helperText= {this.state.errors["email"]}
                      />
-                  <p><span  class="spanid">You can use letters, numbers and symbols</span></p>
+                  <p><span   class="spanid">You can use letters, numbers and symbols</span></p>
             </div>
             <div className="emp"> 
                <div className="name">       

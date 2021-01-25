@@ -21,6 +21,7 @@
     font-family: webkit-pictograph;
     line-height: 1.3333;
     margin-left: -6%;
+    font-size: 14px;
   
 }
 .chkbox{
@@ -73,6 +74,8 @@ button:hover {
     text-align: center;
     justify-content: center;
      align-items: flex-start; 
+     padding-left: 33px;
+     padding-bottom: 40px;
 }
 .main{
      border: 1px solid rgb(212, 212, 212);    
@@ -114,11 +117,13 @@ button:hover {
         flex-direction: column;
     }
     .name{
-        padding-inline-end: 8px;
+        padding: 20px;
     }
     .email{
         width: 50%;
        padding-left: 40px;
+       margin-left: 25px;
+
     }
     
 }

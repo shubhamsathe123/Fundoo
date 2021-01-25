@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { Card } from '@material-ui/core';
+import { login } from "../../Services/userService"
 
 
 
@@ -85,9 +86,16 @@ export default class LoginForm extends React.Component{
       };
 
       console.log(loginData)
+      login (loginData).then((data)=>{
+        console.log(data);
+      })
+      .catch ((error)=>{
+        console.log(error)
+      })
      
     }
   };
+
   render(){
       return(
         <div className="wrapper-tool">
@@ -152,8 +160,7 @@ export default class LoginForm extends React.Component{
                     <Button className="signin"
                       type="submit"
                       variant="contained"
-                      color="secondary"
-                      background-color="royalblue"
+                      color="primary"
                       onClick={this.onSubmit}
                       >
                       Sign In
@@ -182,7 +189,8 @@ export default class LoginForm extends React.Component{
                   </Grid>
                 </Grid>
                 <Grid container justify="flex-end" justify style={{ marginTop: 8, marginBottom: 10 }} className="link" style={{ padding: -1 }}>
-                  <Link  color="textPrimary" >
+                  <Link  href="http://localhost:3000/forgotPassword"
+                  color="textPrimary" >
                       <font color="blue"><u>Forget password?</u></font>
                   </Link>
                 </Grid>

@@ -24,3 +24,14 @@ export function login(data) {
     }
 
 };
+
+export function forgot(data) {
+    try {
+        console.log("This is forgot password part", data);
+        let data2 = axios.post(`http://fundoonotes.incubation.bridgelabz.com/api/user/reset`, data);
+        return data2;
+    } catch (error) {
+        return error;
+    }
+
+};

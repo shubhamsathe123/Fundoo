@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-// import { forgotPass } from "../../Services/userServices"
+ import { forgot } from "../../Services/userService"
 
 class ForgotPassword extends Component{
     constructor(props) {
@@ -73,12 +73,12 @@ class ForgotPassword extends Component{
   
         }
         console.log(forgotPassData)
-        // forgotPass (forgotPassData).then((data)=>{
-        //   console.log(data);
-        // })
-        // .catch ((error)=>{
-        //   console.log(error)
-        // })
+        forgot(forgotPassData).then((data)=>{
+          console.log(data);
+        })
+        .catch ((error)=>{
+          console.log(error)
+        })
           
        }  
       }

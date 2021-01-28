@@ -8,7 +8,7 @@ body {
     margin-top: 5%;
     height: 500px;
     width: 400px;
-    border: 1px solid rgb(212, 212, 212);
+    border: 1px solid rgb(212, 212, 212)  !important;
 }
 
 .link {
@@ -53,13 +53,16 @@ body {
     align-items: center;
     background-color: white;
 }
+.create{
+    display: flex;
+}
 
-@media only screen and (max-width:360px) {
+@media only screen and (max-width:560px) {
     #form {
         margin: auto;
         margin-top: 5%;
         height: 500px;
         width: 400px;
-        
+        border: 1px solid white !important
     }
 }

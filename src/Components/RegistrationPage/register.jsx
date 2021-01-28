@@ -7,7 +7,10 @@ import logo from '../../Images/account.svg';
 import Checkbox from '@material-ui/core/Checkbox';
 // import ReactDOM, { render } from 'react-dom';
 import '../RegistrationPage/register.css'
-import { registration } from "../../Services/userService"
+import UserService from '../../Services/userService'
+
+const userServices = new UserService()
+
 // import { FormHelperText, Grid } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -115,7 +118,7 @@ export default class RegisterForm extends React.Component{
     this.setState({
       hidePassword: true,
       password: event.target.value,
-      icEye: 'visibility-off',
+      // icEye: 'visibility-off',
     });
     let errors = this.state.errors;
     let validate = false;
@@ -139,7 +142,7 @@ export default class RegisterForm extends React.Component{
     this.setState({
       hidePassword: true,
       Rpassword: event.target.value,
-      icEye: 'visibility-off',
+      // icEye: 'visibility-off',
     });
     let errors = this.state.errors;
     let validate = false;
@@ -204,7 +207,7 @@ export default class RegisterForm extends React.Component{
 
     }
     console.log(userData)
-    registration (userData).then((data)=>{
+    userServices.register(userData).then((data)=>{
       console.log(data);
     })
     .catch ((error)=>{
@@ -213,8 +216,6 @@ export default class RegisterForm extends React.Component{
   }  
     
   }
-
-  
 render() {
     return (
       <div className="main" >
@@ -235,6 +236,7 @@ render() {
              <div className="parent">
                  <div className="name">
                     <TextField 
+                    className="first"
                      size="small"  
                       id="outlined-basic"
                       label="First Name" 
@@ -248,7 +250,8 @@ render() {
                          />
                   </div> 
                  <div className="laname">
-                    <TextField size="small"  
+                    <TextField size="small" 
+                    className="second" 
                     id="outlined-basic" 
                     label="Last Name" 
                     variant="outlined" 
@@ -262,9 +265,11 @@ render() {
                 
              </div>
             <div className="email">
-                  <TextField size="small"  
+                  <TextField 
+                  className="third"
+                  size="small"  
                   id="outlined-basic" 
-                  style ={{width: '129%'}} 
+                  // style ={{width: '129%'}} 
                   label="Username" 
                   variant="outlined" 
                   width="500px" 
@@ -278,7 +283,9 @@ render() {
             </div>
             <div className="emp"> 
                <div className="name">       
-                <TextField  size="small"  
+                <TextField  
+                className="fourth"
+                size="small"  
                 id="outlined-basic" 
                 label="password" 
                 variant="outlined"  
@@ -292,6 +299,7 @@ render() {
                  />
                 </div> 
                  <TextField size="small" 
+                 className="fifth"
                  id="outlined-basic" 
                  label="confirm" 
                  variant="outlined"
@@ -319,7 +327,9 @@ render() {
               color="primary"
               onClick={this.handleSubmit2}
               >  Next </Button>
-              <Button className="button2" color="primary">Sign in instead</Button>
+              <Button
+              href="http://localhost:3000/login"
+              className="button2" color="primary">Sign in instead</Button>
         </div>
       </div>
 

@@ -8,7 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
- import { forgot } from "../../Services/userService"
+import UserService from '../../Services/userService'
+
+const userServices = new UserService()
 
 class ForgotPassword extends Component{
     constructor(props) {
@@ -73,7 +75,7 @@ class ForgotPassword extends Component{
   
         }
         console.log(forgotPassData)
-        forgot(forgotPassData).then((data)=>{
+        userServices.forgot(forgotPassData).then((data)=>{
           console.log(data);
         })
         .catch ((error)=>{
@@ -116,7 +118,7 @@ render(){
                       required
                       fullWidth
                       id="emailOrNumber"
-                      label="Enter phone number or email :"
+                      label="Enter your email :"
                       name="email"
                       autoComplete="email"
                       value={this.state.email}
@@ -133,7 +135,8 @@ render(){
               </br>
               <Grid>
                   <Grid>
-                  <Link href="http://localhost:3000/ResetPassword" color="textPrimary" >
+                  {/* href="http://localhost:3000/ResetPassword"  */}
+                  <Link color="textPrimary" >
                   <Button 
                      variant="contained" 
                      color="primary"

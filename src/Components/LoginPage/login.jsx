@@ -9,7 +9,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { Card } from '@material-ui/core';
-import { login } from "../../Services/userService"
+import UserService from '../../Services/userService'
+
+const userServices = new UserService()
 
 
 
@@ -86,7 +88,7 @@ export default class LoginForm extends React.Component{
       };
 
       console.log(loginData)
-      login (loginData).then((data)=>{
+      userServices.login(loginData).then((data)=>{
         console.log(data);
       })
       .catch ((error)=>{
@@ -175,21 +177,19 @@ export default class LoginForm extends React.Component{
                 </br>
                 <br>
                 </br>
+                
                 <Grid className="extra-tool"  >
                   <Grid container justify="flex-start">
-
                     <Grid item >
-
-                      <Link  color="textPrimary" >
+                      <Link  color="textPrimary" 
+                          href="http://localhost:3000/register" >
                          <font color="blue"><u>Create account</u></font>
                       </Link>
-
-
                     </Grid >
                   </Grid>
                 </Grid>
                 <Grid container justify="flex-end" justify style={{ marginTop: 8, marginBottom: 10 }} className="link" style={{ padding: -1 }}>
-                  <Link  href="http://localhost:3000/forgotPassword"
+                  <Link  href="http://localhost:3000/forgot"
                   color="textPrimary" >
                       <font color="blue"><u>Forget password?</u></font>
                   </Link>
